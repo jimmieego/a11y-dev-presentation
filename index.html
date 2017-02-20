@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Web Accessibility for Developers</title>
+		<title>Accessible Web Mapping Apps: ARIA, WCAG and 508 Compliance</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -25,35 +25,103 @@
 		<div class="reveal">
 			<div class="slides">
 
-<section data-markdown data-background-color="#e7e7e7">
-	<script type="text/template" >
-# Web Accessibility for Developers
-  </script>
+<section data-background-image="images/background.png">
+<img src="images/esrilogo.png" id="esrilogo" style="all:initial; position: absolute; right: -200px; top: -180px; border: 0; background: none; box-shadow: none; margin: 0;" />
+
+<h2>Accessible Web Mapping Apps</h2>
+<h3> ARIA, WCAG and 508 Compliance</h3> 
+<br>
+<h5>Kelly Hutchins</h5>
+<h5>Tao Zhang</h5>
+
 </section>
 
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ## Agenda
-- WCAG 2.0
-- Focus
-- Semantic HTML
-- WAI-ARIA
-- Common Accessibility Issues
+- Introduction
+- Section 508 and WCAG
+- Developing Accessibility
+ - Focus
+ - Semantic HTML
+ - WAI-ARIA
+- Demo
 - Automated Testing
 - Resources
   </script>
 </section>
 
+<section data-background-color="#e7e7e7">
+	
+<h2>Diversity of Users</h2>
+<ul>
+<li class="fragment">About 15% of world population lives with some form of disability</li>
+<li class="fragment">1 Billion People </li>
+</ul>
+</section>
+
+<section data-background-color="#e7e7e7">	
+	<h2>Forms of Disability</h2>
+	<img src="images/disabilityforms.png" style="all:initial; height: 70%; width: 70%;" />
+</section>
+
+<section data-background-color="#e7e7e7">
+	<h2>Visual</h2>
+	<p>A broad range from <strong>no vision</strong> (total blindness) to <strong>limited or low vision</strong></p>
+</section>
+
+<section data-background-color="#e7e7e7">
+	<h2>Motor</h2>
+	<p>Users may prefer not to use a mouse, have <strong>RSI</strong> (Repetitive Strain Injury), or physical <strong>paralysis</strong> and <strong>limited range of motion</strong></p>
+</section>
+
+<section data-background-color="#e7e7e7">
+	<h2>Auditory</h2>
+	<p>Users may be <strong>completely deaf</strong> or <strong>hard of hearing</strong></p>
+</section>
+
+<section data-markdown data-background-color="#e7e7e7">
+<script type="text/template">
+## Cognitive
+<p class="fragment" style="text-align: left;">A broad range including:</p>
+<ul>
+<li class="fragment">Learning disabilities</li>
+<li class="fragment">Reading disorders(**dyslexia**)</li>
+<li class="fragment">Attention deficit disorders(**ADHD** and **autism**)</li>
+</ul>
+<p class="fragment" style="text-align: left;">Far more users with cognitive disabilities than all the other types of disabilities combined</p>
+</script>
+</section>
+
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
-## WCAG 2.0
+## Benefits of Accessibility
+- Accessible interfaces is about good design and coding practice
+- Good accessibility is good user experience
+- Accessibility will enhance design, not destroy it
+  </script>
+</section>
+
+<section data-markdown data-background-color="#e7e7e7">
+	<script type="text/template">
+## Section 508 and WCAG
+  </script>
+</section>
+
+<section data-markdown data-background-color="#e7e7e7">
+	<script type="text/template">
+## Section 508
+- Section 508 of the Rehabilitation Act of 1973
+- Mandates that people with disabilities have **same access to and use** of ICT (Information and Communication Technology) comparable to those without disabilities
+- Products procured by government agencies must pass Section 508 requirements
+- Recent refresh incoporates WCAG 2.0 Level A and AA success criteria 
   </script>
 </section>
 
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Overview of WCAG 2.0
-<img alt="Overview of the structure of WCAG 2.0" src="images/wcag_overview.png" style="height: 80%; width: 80%;"/>
+<img alt="Overview of the structure of WCAG 2.0" src="images/wcag_overview.png" style="all:initial; height: 80%; width: 80%;"/>
   </script>
 </section>
 
@@ -87,7 +155,7 @@
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Introduction
-- <span style="color:#196fa6">**Focus**</span>: Which control on the screen currently receives input from keyboard and from the clipboard when you paste content.
+- <span style="color:#196fa6">**Focus**</span>: Which control on the screen currently receives input from keyboard.
 - Focus ring: visual focus indicator, style depending on browser and page style.
 
 ![Sign In button in focus](images/button_focus.png)
@@ -102,7 +170,7 @@
 - Native interactive HTML elements are focusable:
  - Text fields, Buttons, Links, Select lists ...
 - (Normally) not focusable:
- - Paragraphs, Divs, Spans, Headings ...
+ - `<p>`, `<div>`, `<span>`, `<h1>` ...
 - Only focus elements that keyboard users need to interact with
 - Screen reader users have ways to read focusable and non-focusable elements
   </script>
@@ -121,10 +189,16 @@
 	<script type="text/template">
 ### Offscreen elements
 - Example: [Calcite drawer pattern](http://esri.github.io/calcite-web/documentation/patterns/#drawers)
-- Prevent the panel from gaining focus when it's off screen
- - Set `display:none` or `visibility:hidden` when off screen
-- Only allow it to be focused when the user can interact with it
- - Set `display:block` or `visibility:visible` before showing it to user
+- Prevent element from gaining focus when off screen
+```css
+display:none;
+visibility:hidden; /* alternative */
+```
+- Only allow it to be focused when user can interact with it
+```css
+display:block;
+visibility:visible; /* alternative */
+```
   </script>
 </section>
 
@@ -218,11 +292,10 @@ Chrome Canary's accessibility tree view
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 - Assistive technologies simulate and relay user interactions like click and key press to accessibility tree.
-- As developers, we need:
+- As developers, we need to:
  - Express the semantics of page correctly.
  - Specify accessible names and descriptions.
  - Make sure important elements have correct accessible roles, states, and properties.
- - The browser can then let the assistive technologies access the information to create a customized experience.
   </script>
 </section>
 </section>
@@ -231,9 +304,9 @@ Chrome Canary's accessibility tree view
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Semantics in native HTML
-- Most HTML elements have implicit semantics (role and state).
-- Native HTML elements are recognized by browsers and work predictably on a variety of platforms.
-- We should take advantage of built-in accessibility by writing HTML that expresses the semantics of page elements.
+- Most HTML elements have implicit semantics (**role** and **state**).
+- Native HTML elements work predictably across browsers
+ - Take advantage of this!
 	</script>
 </section>
 
@@ -268,8 +341,8 @@ Example:
 	<script type="text/template">
 ### Keyboard
 - Native interactive HTML elements receive keyboard focus:
- - `<a href>`, `<button>`, `<input>`...
-- <kbd>Tab</kbd> order follows the DOM order of interactive elements
+ - `<a>`, `<button>`, `<input>`...
+- <kbd>Tab</kbd> order follows DOM order of interactive elements
 - Interactive elements have expected interactions:
  - Link: click, tap, or <kbd>Enter</kbd> key
  - Button: click, tap, <kbd>Enter</kbd> key, or <kbd>Space</kbd> key
@@ -290,11 +363,11 @@ Example:
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 <p style="text-align: left;">If the element is interactive, we need to do extra work:</p>
-- Make it focusable: `tabindex="0"`
-- Receive keyboard events: <kbd>Enter</kbd>, <kbd>Space</kbd>
-- Name: explicit label (`label`) or implicit text (`aria-label`, `aria-labelledby`)
-- Role
-- States and properties
+- Make it **focusable**: `tabindex="0"`
+- Receive **keyboard events**: <kbd>Enter</kbd>, <kbd>Space</kbd>
+- **Name**: explicit label (`label`) or implicit text (`aria-label`, `aria-labelledby`)
+- **Role**
+- **States** and **properties**
 	</script>
 </section>
 
@@ -309,7 +382,8 @@ Example:
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Why need ARIA
-- Native HTML semantics should still be used whenever possible, but ARIA is useful when certain semantics, design patterns, or interactions make it impossible to do so.
+- Use Native HTML semantics whenever possible
+- Certain semantics and design patterns make it impossible to use native HTML semantics.
 - Example: a pop-up menu, no standard HTML element
 - Example: a semantic characteristic "the user needs to know about this as soon as possible"
 	</script>
@@ -333,9 +407,9 @@ Example:
 	<ul>
 		<li>Focusable</li>
 		<li>Keyboard event listeners</li>
-		<li>Custom behaviors still need to be implemented</li>
 	</ul>
 </div>
+<p style="text-align: left;">Custom behaviors still need to be implemented</p>
 </section>
 </section>
 
@@ -435,7 +509,7 @@ Screen reader will report this as a checkbox.
 	<script type="text/template">
 ### Relationships
 - `aria-owns`
- - Indicates an element should be treated as parent of another separate element in the DOM
+ - Indicates an element should be treated as parent of another separate DOM element
 ![aria-owns example](images/aria-owns.jpg)
 	</script>
 </section>
@@ -444,7 +518,7 @@ Screen reader will report this as a checkbox.
 	<script type="text/template">
 ### Relationships
 - `aria-describedby`
- - Provides an accessible description for an element
+ - Provides accessible description for an element
  - References elements in the DOM separated from current element
 ![aria-describedby example](images/aria-describedby.jpg)
 	</script>
@@ -469,7 +543,7 @@ Screen reader will report this as a checkbox.
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Hide elements
-- Elements explicitly hidden from the DOM will not be included in the accessibility tree
+- Elements explicitly hidden from the DOM will not be included in accessibility tree
 ```css
 [hidden] {
 	display: none; /*not rendered, no space allocated */
@@ -511,10 +585,11 @@ Screen reader will report this as a checkbox.
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
 ### Update elements
+- `role="alert"`
 - `aria-live`
- - Marks an element as "live region" in which updates should be communicated to users immediately.
- - `aria-live="polite"`: alert the user when the screen reader has finished current action
- - `aria-live="assertive"`: interrupt current action and alert the user immediately
+ - Marks element as "live region" in which updates should be communicated to users immediately.
+ - `aria-live="polite"`: alert user when screen reader has finished current action
+ - `aria-live="assertive"`: interrupt current action and alert user immediately
 <img alt="aria-live example" src="images/aria-live.jpg" width="55%" height="55%"/>
 	</script>
 </section>
@@ -526,7 +601,7 @@ Screen reader will report this as a checkbox.
 ### ARIA best practices
 <p style="text-align:left;">1. Do not change native semantics, unless you *really* have to.</p>
  - Example: A developer wants to implement a heading which is also a button.
- - Do not do this:
+ - Don't do this:
 ```html
 <h2 role="button">heading button</h2>
 ```
@@ -539,11 +614,11 @@ Screen reader will report this as a checkbox.
 
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
-<p style="text-align:left;">2. All interactive ARIA elements must be usable with the keyboard.</p>
-- The elements should respond to standard key strokes when applicable.
- - Example: if using `role="button"`, the element should have `tabindex="0"` to receive keyboard focus and JavaScript to activate <kbd>Enter</kbd> and <kbd>Space</kbd> actions.
-- The user must be able to navigate to the element and perform actions using keyboard.
- - Example: If the user can click through cells of a data grid, he must be able to navigate the cells using keyboard only.
+<p style="text-align:left;">2. All interactive ARIA elements must be usable with keyboard.</p>
+- The elements should respond to standard key strokes.
+ - Example: If using `role="button"`, add `tabindex="0"` and support <kbd>Enter</kbd> and <kbd>Space</kbd> actions.
+- The user must be able to navigate and perform actions using keyboard.
+ - Example: If allowing clicking through data grid, support navigating grid cells using keyboard.
 	</script>
 </section>
 
@@ -552,7 +627,7 @@ Screen reader will report this as a checkbox.
 <div align="left">
 <ul>
 <li>This will result in focusing on "nothing".</li>
-<li>Do not do these:</li>
+<li>Don't do these:</li>
 </ul>
 </div>
 
@@ -560,6 +635,7 @@ Screen reader will report this as a checkbox.
 <button role="presentation">Press me</button>
 <button aria-hidden="true">Press me</button>
 </code></pre>
+
 </section>
 
 <section data-background-color="#e7e7e7">
@@ -574,119 +650,39 @@ Screen reader will report this as a checkbox.
 </section>
 </section>
 
+<section data-markdown data-background-color="#e7e7e7">
+	<script type="text/template">
+## Create Accessible Web Components
+	</script>
+</section>
+
 <section data-background-color="#e7e7e7">
-<h3>ARIA elements accessibility checklist</h2>
-<table style="font-size:0.8em;">
-	<thead>
-		<tr>
-			<th>Requirement</th>
-			<th>Description</th>
-		</tr>
-  </thead>
-	<tbody>
-		<tr>
-			<td>Focusable</td>
-			<td>Can you get to the element via keyboard?</td>
-		</tr>
-		<tr>
-			<td>Operable</td>
-			<td>Can you use the element with keyboard?</td>
-		</tr>
-		<tr>
-			<td>Expected operation</td>
-			<td>Does the element match <a href="https://www.w3.org/TR/wai-aria-practices/">WAI-ARIA Authoring Practices</a>?</td>
-		</tr>
-		<tr>
-			<td>Focus visible</td>
-			<td>Can you see when the element has keyboard focus?</td>
-		</tr>
-		<tr>
-			<td>Label</td>
-			<td>Does the element have accessible text label?</td>
-		</tr>
-		<tr>
-			<td>Role</td>
-			<td>Does the element have appropriate ARIA role?</td>
-		</tr>
-		<tr>
-			<td>States and properties</td>
-			<td>Does the element have any ARIA states and properties to show UI changes?</td>
-		</tr>
-	</tbody>
-</table>
+<h4><a href="https://www.w3.org/TR/wai-aria-practices-1.1/">ARIA Design Patterns</a></h4>
+<img src="images/aria_authoring_practices.png" />
 </section>
 
 <section data-markdown data-background-color="#e7e7e7">
 	<script type="text/template">
-## Common Accessibility Issues
+## Accessible Map
+- For low-vision users:
+ - Color contrast
+ - Color blindness
+ - Scaling and images of text
+- For non-sighted users:
+ - Alternative text for map's core information
+ - [Accessibility in Google Maps](https://support.google.com/maps/answer/6396990?co=GENIE.Platform%3DDesktop&hl=en) 
+	</script>
+</section>
+
+<section data-markdown data-background-color="#e7e7e7">
+	<script type="text/template">
+## Demo: Common Accessibility Issues
 - Text alternatives
 - Semantic HTML
 - Tab order and focus
 - Color
 - Label
 	</script>
-</section>
-
-<section data-markdown data-background-color="#e7e7e7">
-	<script type="text/template">
-### Text alternatives
-- Every `<img>` must have an `alt` attribute.
-- Images that contain information or perform actions require descriptive `alt` text.
-- The `alt` attribute should describe the *information* conveyed by the image, not the image itself.
-- Decorative images should have empty `alt` text.
-	</script>
-</section>
-
-<section data-markdown data-background-color="#e7e7e7">
-	<script type="text/template">
-### Semantic HTML
-- Tabular data should be in `<table>`.
-- Headings are in `<h1>` - `<h6>` elements.
-- Lists have list item (`<li>`) elements wrapped in `<ul>` or `<ol>` elements.
-- Inputs (`<input>`) should always have a `<label>`, `aria-label`, or `aria-labelledby`.
-- Set up ARIA [landmark roles](https://www.w3.org/TR/wai-aria/roles#landmark_roles).
-- [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.1/) provides detailed design patterns of accessible web components such as accordion, dialog, tabs, etc.
-	</script>
-</section>
-
-<section data-markdown data-background-color="#e7e7e7">
-	<script type="text/template">
-### Tab order and focus
-- Use `tabindex="0"` and let the natural DOM structure determine the keyboard tab order.
-- Avoid jumping around keyboard focus
-- Show clear focus indicator for interactive elements
-- Do not set `outline:none` to focusable elements, unless using customized focus style
-	</script>
-</section>
-
-<section data-markdown data-background-color="#e7e7e7">
-	<script type="text/template">
-### Color
-- In addition to color, provide additional indication that does not rely on color perception.
-- Minimum color contrast ratio is **4.5** for normal text, 3 for larger text (at least 24 px or 19 px bold).
-- [Contrast ratio tool](http://leaverou.github.io/contrast-ratio/)
-- Placeholder text in form fields is **not** exempt.
-- Logos or disabled elements are exempt.
-	</script>
-</section>
-
-<section data-background-color="#e7e7e7">
-<h3>Label</h3>
-<ul>
-<li>Associate label with form control:</li>
-<pre><code class="html" data-trim>
-<!-- calcite-web pattern -->
-<label>
-	Email
-	<input type="text" placeholder="name@example.com">
-</label>
-<!-- alternative -->
-<label for="email">Email: </label>
-<input type="text" id="email" placeholder="name@example.com">
-</pre></code>
-<li>Avoid replacing visual text label with placeholder text.</li>
-<li>Use <code>aria-label</code>, <code>aria-labelledby</code>, and <code>aria-describedby</code> if needed.</li>
-</ul>
 </section>
 
 <section data-markdown data-background-color="#e7e7e7">
@@ -770,6 +766,10 @@ npm install axe-core --save-dev
 	</script>
 </section>
 
+
+<section data-background-image="images/lastslide.png">
+
+</section>
 
 
 			</div>
