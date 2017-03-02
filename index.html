@@ -55,8 +55,8 @@
 	
 <h2>Diversity of Users</h2>
 <ul>
-<li class="fragment">About 15% of world population lives with some form of disability</li>
-<li class="fragment">1 Billion People </li>
+<li>About 15% of world population lives with some form of disability</li>
+<li>1 Billion People </li>
 </ul>
 </section>
 
@@ -83,13 +83,13 @@
 <section data-markdown data-background-image="images/bg-4.png">
 <script type="text/template">
 ## Cognitive
-<p class="fragment" style="text-align: left;">A broad range including:</p>
+<p style="text-align: left;">A broad range including:</p>
 <ul>
-<li class="fragment">Learning disabilities</li>
-<li class="fragment">Reading disorders(**dyslexia**)</li>
-<li class="fragment">Attention deficit disorders(**ADHD** and **autism**)</li>
+<li>Learning disabilities</li>
+<li>Reading disorders(**dyslexia**)</li>
+<li>Attention deficit disorders(**ADHD** and **autism**)</li>
 </ul>
-<p class="fragment" style="text-align: left;">Far more users with cognitive disabilities than all the other types of disabilities combined</p>
+<p style="text-align: left;">Far more users with cognitive disabilities than all the other types of disabilities combined</p>
 </script>
 </section>
 
@@ -153,7 +153,7 @@
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### Introduction
+### Focus Introduction
 - **Focus**: Which control on the screen currently receives input from keyboard.
 - Focus ring: visual focus indicator, style depending on browser and page style.
 
@@ -171,7 +171,7 @@
 - (Normally) not focusable:
  - `<p>`, `<div>`, `<span>`, `<h1>` ...
 - Only focus elements that keyboard users need to interact with
-- Screen reader users have ways to read focusable and non-focusable elements
+- Screen reader users have ways to read focusable and non-focusable elements. ([demo](http://codepen.io/jimmieego/pen/RprZdz))
   </script>
 </section>
 
@@ -203,7 +203,7 @@ visibility:visible; /* alternative */
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### Test
+### Test focus
 - Tab through page to see tab order doesn't disappear or jump out of logical sequence
 - Make sure to hide offscreen content
 - Rearrange elements' position in the DOM if necessary
@@ -311,7 +311,7 @@ Chrome Canary's accessibility tree view
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-Example:
+[Example](http://codepen.io/jimmieego/pen/yMePRB):
 ```html
 <a href="http://www.esri.com">Esri Homepage</a>
 ```
@@ -323,7 +323,7 @@ Example:
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-Example:
+[Example](http://codepen.io/jimmieego/pen/yMePRB):
 ```html
 <label><input type="checkbox" checked>Working at Esri</label>
 ```
@@ -341,10 +341,9 @@ Example:
 ### Keyboard
 - Native interactive HTML elements receive keyboard focus:
  - `<a>`, `<button>`, `<input>`...
-- <kbd>Tab</kbd> order follows DOM order of interactive elements
 - Interactive elements have expected interactions:
  - Link: click, tap, or <kbd>Enter</kbd> key
- - Button: click, tap, <kbd>Enter</kbd> key, or <kbd>Space</kbd> key
+ - Button: click, tap, <kbd>Enter</kbd> key, or **<kbd>Space</kbd>** key
  - Input: click, tap, or <kbd>Enter</kbd> key
 	</script>
 </section>
@@ -353,7 +352,7 @@ Example:
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ### Neutral semantics
-- Some HTML elements do not convey semantics (role or state)
+- Some HTML elements do not convey semantics (role or state):
  - `<div>This is a block area</div>`
  - `<span>This is an inline area</span>`
 	</script>
@@ -375,6 +374,7 @@ Example:
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ## WAI-ARIA
+#### Web Accessibility Initiative – Accessible Rich Internet Applications
 	</script>
 </section>
 
@@ -383,8 +383,8 @@ Example:
 ### Why need ARIA
 - Use Native HTML semantics whenever possible
 - Certain semantics and design patterns make it impossible to use native HTML semantics.
-- Example: a pop-up menu, no standard HTML element
-- Example: a semantic characteristic "the user needs to know about this as soon as possible"
+  - Example: a pop-up menu, no standard HTML element
+  - Example: a semantic characteristic "the user needs to know about this as soon as possible"
 	</script>
 </section>
 
@@ -415,20 +415,20 @@ Example:
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ### ARIA attributes
-- **Roles**: meaning of an element
- - `tooltip`, `tablist`, `search`
-- **Properties**: relationships and functions
- - `aria-required`, `aria-controls`
- - `aria-label`, `aria-labelledby`
-- **States**: current interaction states
- - `aria-checked`, `aria-expanded`, `aria-hidden`
+
+| Type | Purpose | Examples |
+|------|---------|----------|
+| **Roles** | Meaning of an element | `tooltip`, `tablist`, `search` |
+| **Properties** | Relationships and functions | `aria-required`, `aria-controls`, `aria-label`, `aria-labelledby` |
+| **States** | Current interaction states | `aria-checked`, `aria-expanded`, `aria-hidden` |
+
 	</script>
 </section>
 
 <section>
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### An ARIA example
+### [An ARIA example](http://codepen.io/jimmieego/pen/dvGJbJ)
 ```html
 <li tabindex="0" class="checkbox" checked>
 	Show premium content
@@ -441,7 +441,7 @@ Example:
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### An ARIA example
+### [An ARIA example](http://codepen.io/jimmieego/pen/dvGJbJ)
 ```html
 <li tabindex="0" class="checkbox" role="checkbox" checked
 aria-checked="true">
@@ -462,6 +462,8 @@ Screen reader will report this as a checkbox.
  - `contentinfo`: A collection of metadata, copyright information and the like.
  - `main`: the main content of a document.
  - `navigation`: A collection of links for navigation.
+
+[Demo](http://heaths-org.mapsdevext.arcgis.com/home/item.html?id=84539dfd9a6e4a2a80821e7ff193b343)
 	</script>
 </section>
 
@@ -482,7 +484,7 @@ Screen reader will report this as a checkbox.
 <section>
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### Labels
+### Properties - Labels
  - `aria-label`
  - Specifies a string as accessible label
  - Overrides native labeling
@@ -492,7 +494,7 @@ Screen reader will report this as a checkbox.
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-### Labels
+### Properties - Labels
 - `aria-labelledby`
  - Specifies `id` of another DOM element (or a list of `id`)
  - Overrides all other name sources
@@ -575,6 +577,7 @@ Screen reader will report this as a checkbox.
 - `aria-hidden`
  - Excludes content from assistive technology that is not visually hidden.
  - Removes current element and all of its descendants from the accessibility tree.
+ - [Demo](http://codepen.io/jimmieego/pen/evJVLQ)
 	</script>
 </section>
 
@@ -755,15 +758,17 @@ npm install axe-core --save-dev
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ## Resources
-- [W3C-WCAG 2.0](https://www.w3.org/TR/WCAG20/)
-- [Interpretation of success criteria](https://www.wuhcag.com/wcag-checklist/)
-- [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)
-- egghead.io course: [Start Building Accessible Web Applications Today](https://egghead.io/courses/start-building-accessible-web-applications-today)
+- Documentation
+  - [W3C-WCAG 2.0](https://www.w3.org/TR/WCAG20/)
+  - [Interpretation of success criteria](https://www.wuhcag.com/wcag-checklist/)
+  - [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)
+- Courses
+  - egghead.io: [Start Building Accessible Web Applications Today](https://egghead.io/courses/start-building-accessible-web-applications-today)
+  - Udacity: [Web Accessibility by Google](https://www.udacity.com/course/web-accessibility--ud891)
 - [a11y](https://github.com/addyosmani/a11y)
 - [axe-core](https://github.com/dequelabs/axe-core)
-- Browser plugin:
- - [aXe](http://www.deque.com/products/axe/)
- - [Chrome Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en)
+- [aXe Chrome extension](http://www.deque.com/products/axe/)
+- [Chrome Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en)
 - Some of the diagrams are adapted from [Google Developers: Web Fundamentals](https://developers.google.com/web/fundamentals/)
 	</script>
 </section>
