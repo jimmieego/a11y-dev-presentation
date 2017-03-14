@@ -125,6 +125,7 @@ visibility:visible; /* alternative */
   </script>
 </section>
 
+<section>
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ### Test focus
@@ -132,6 +133,19 @@ visibility:visible; /* alternative */
 - Make sure to hide offscreen content
 - Rearrange elements' position in the DOM if necessary
   </script>
+</section>
+
+<section data-markdown data-background-image="images/bg-4.png">
+	<script type="text/template">
+### Which item has focus?
+```javascript
+$('body').on('focusin', function() { 
+    console.log(document.activeElement); 
+});
+```
+  </script>
+</section>
+
 </section>
 
 <section data-markdown data-background-image="images/bg-4.png">
@@ -214,13 +228,27 @@ Chrome Canary's accessibility tree view
 
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
-- Assistive technologies simulate and relay user interactions like click and key press to accessibility tree.
+Assistive technologies simulate and relay user interactions like click and key press to accessibility tree.
+  </script>
+</section>
+
+<section data-markdown data-background-image="images/bg-4.png">
+	<script type="text/template">
+### [The contract model with accessibility APIs](https://www.w3.org/TR/wai-aria/introduction)	
+<img alt="The contract model with accessibility APIs" class="plain" src="images/accessibleelement.png" />
+  </script>
+</section>
+
+<section data-markdown data-background-image="images/bg-4.png">
+	<script type="text/template">
 - As developers, we need to:
  - Express the semantics of page correctly.
  - Specify accessible names and descriptions.
  - Make sure important elements have correct accessible roles, states, and properties.
+- Always ask: "What is this thing and what does it do?"
   </script>
 </section>
+
 </section>
 
 <section>
@@ -290,6 +318,30 @@ Chrome Canary's accessibility tree view
 - **Name**: explicit label (`label`) or implicit text (`aria-label`, `aria-labelledby`)
 - **Role**
 - **States** and **properties**
+	</script>
+</section>
+
+<section data-markdown data-background-image="images/bg-4.png">
+	<script type="text/template">
+### [WCAG 4.1.2: Name, Role, Value](https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html)
+<table>
+	<tr>
+		<td><b>Name</b></td>
+		<td>what do we call this thing?</td>
+	</tr>
+	<tr>
+		<td><b>State</b></td>
+		<td>What is this thing doing?</td>
+	</tr>
+	<tr>
+		<td><b>Role</b></td>
+		<td>What is its purpose?</td>
+	</tr>
+	<tr>
+		<td><b>Value</b></td>
+		<td>What value does it represent?</td>
+	</tr>
+</table>
 	</script>
 </section>
 
