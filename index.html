@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>Accessible Web Mapping Apps: ARIA, WCAG and 508 Compliance</title>
+		<title>Accessibility for Developers</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<!-- <link rel="stylesheet" href="css/theme/black.css"> -->
@@ -28,10 +28,11 @@
 
 <section data-background-image="images/background.png">
 
-<h2>Accessible Web Mapping Apps</h2>
-<h3> ARIA, WCAG and 508 Compliance</h3> 
+<h2>Accessibility for Developers</h2> 
 <br>
 <h5>Kelly Hutchins</h5>
+<h5>Paul Pederson</h5>
+<h5>Blake Stearman</h5>
 <h5>Tao Zhang</h5>
 
 </section>
@@ -39,7 +40,6 @@
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ## Agenda
-- Introduction
 - Section 508 and WCAG
 - Knowledge and Techniques
  - Focus
@@ -51,88 +51,12 @@
   </script>
 </section>
 
-<section data-background-image="images/bg-4.png">
-	
-<h2>Diversity of Users</h2>
-<ul>
-<li>About 15% of world population lives with some form of disability</li>
-<li>1 Billion People </li>
-</ul>
-</section>
-
-<section data-background-image="images/bg-4.png">	
-	<h2>Forms of Disability</h2>
-	<img src="images/disabilityforms.png" style="all:initial; height: 70%; width: 70%;" />
-</section>
-
-<section data-background-image="images/bg-4.png">
-	<h2>Visual</h2>
-	<p>A broad range from <strong>no vision</strong> (total blindness) to <strong>limited or low vision</strong></p>
-</section>
-
-<section data-background-image="images/bg-4.png">
-	<h2>Motor</h2>
-	<p>Users may prefer not to use a mouse, have <strong>RSI</strong> (Repetitive Strain Injury), or physical <strong>paralysis</strong> and <strong>limited range of motion</strong></p>
-</section>
-
-<section data-background-image="images/bg-4.png">
-	<h2>Auditory</h2>
-	<p>Users may be <strong>completely deaf</strong> or <strong>hard of hearing</strong></p>
-</section>
-
-<section data-markdown data-background-image="images/bg-4.png">
-<script type="text/template">
-## Cognitive
-<p style="text-align: left;">A broad range including:</p>
-<ul>
-<li>Learning disabilities</li>
-<li>Reading disorders(**dyslexia**)</li>
-<li>Attention deficit disorders(**ADHD** and **autism**)</li>
-</ul>
-<p style="text-align: left;">Far more users with cognitive disabilities than all the other types of disabilities combined</p>
-</script>
-</section>
-
-<section data-markdown data-background-image="images/bg-4.png">
-	<script type="text/template">
-## Benefits of Accessibility
-- Accessible interfaces is about good design and coding practice
-- Good accessibility is good user experience
-- Accessibility will enhance design, not destroy it
-  </script>
-</section>
-
 <section data-markdown data-background-image="images/bg-4.png">
 	<script type="text/template">
 ## Section 508 and WCAG
-  </script>
-</section>
-
-<section data-markdown data-background-image="images/bg-4.png">
-	<script type="text/template">
-## Section 508
-- The Rehabilitation Act of 1973
-- Mandates that people with disabilities have **same access to and use** of ICT (Information and Communication Technology) comparable to those without disabilities
-- Products procured by government agencies must pass Section 508 requirements
-- Recent refresh incoporates WCAG 2.0 Level A and AA success criteria
+- Recent 508 refresh incoporates WCAG 2.0 Level A and AA success criteria
  - Published: Jan. 18, 2017
- - Enforcement: Jan. 18, 2018 
-  </script>
-</section>
-
-<section data-markdown data-background-image="images/bg-4.png">
-	<script type="text/template">
-### Overview of WCAG 2.0
-<img alt="Overview of the structure of WCAG 2.0" src="images/wcag_overview.png" style="all:initial; height: 80%; width: 80%;"/>
-  </script>
-</section>
-
-<section data-markdown data-background-image="images/bg-4.png">
-	<script type="text/template">
-### Level of Conformance
-- Level  **A**: Sets a minimum level of accessibility and does not achieve broad accessibility for many situations.
-- Level **AA**: Generally recommended for web-based information.
-- Level **AAA**: W3C does not recommend be required as general policy because it is not possible to satisfy all Level AAA Success Criteria for some content.
+ - Enforcement: Jan. 18, 2018
   </script>
 </section>
 
@@ -774,8 +698,6 @@ npm install axe-core --save-dev
 	</script>
 </section>
 
-<section data-background-image="images/survey.png">
-</section>
 
 <section data-background-image="images/lastslide.png">
 </section>
